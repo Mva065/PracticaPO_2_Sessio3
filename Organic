@@ -1,0 +1,27 @@
+package Exercici3;
+
+public class Organic extends ContenidorBrossa {
+
+	private double tonesReciclat;
+	
+	public double gettonesReciclat(){
+		return tonesReciclat;
+	}
+	
+	public Organic(String codi, Ubicacio ubicacio, int anycol, int tara) {
+		super(codi, 1, ubicacio, anycol, tara);
+	}
+	
+	public String getXXX(){
+		return tonesReciclat + " Tm";
+	}
+
+	@Override
+	public String getTipusBrossa() {
+		return "orgànic";
+	}
+
+	@Override
+	public void buidat(float pes) {
+		tonesReciclat = (float) (((- this.gettara() + pes) * 0.9) / 1000);	
+	} }
