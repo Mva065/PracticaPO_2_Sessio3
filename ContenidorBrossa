@@ -1,0 +1,75 @@
+package Exercici3;
+import java.util.GregorianCalendar;
+
+public abstract class ContenidorBrossa {
+
+	private String codi; //Atributs
+	Ubicacio ubicacio;
+	private int anycol, anyret, color;
+	protected int tara;
+	
+	public static int numMarrons = 0;
+	public static int numGrisos = 0;
+	public static int numBlaus = 0;
+	public static int numGrocs = 0;
+	public static int numVerds = 0;
+	
+	
+	public String getcodi(){ // Mètode d'accés als atributs
+		return codi;
+	}
+	
+	public int getcolor (){ // Mètode d'accés als atributs
+		return color;
+	}
+	
+	public int getanyret(){ // Mètode d'accés als atributs
+		return anyret;
+	}
+	
+	public int getanycol(){ // Mètode d'accés als atributs
+		return anycol;
+	}
+	
+	public int gettara(){ // Mètode d'accés als atributs
+		return tara;
+	}
+	
+	public ContenidorBrossa(String codi, int color, Ubicacio ubicacio, int anycol, int tara){ //Constructor
+		this.codi = codi;
+		this.color = color;
+		this.anycol = anycol;
+		this.ubicacio = ubicacio;
+		this.tara = tara;
+	}
+		
+	public abstract String getTipusBrossa();
+	
+	public abstract void buidat(float pes);
+	
+	public String getEstat(){
+		GregorianCalendar avui = new GregorianCalendar();
+		int anyActual = avui.get(1);
+		if (anyActual - this.anycol >= 5){
+			return "Vell";
+		} else if (anyActual - this.anycol <= 3){
+			return "Nou";
+		} else {
+			return "Seminou";
+		}
+	}
+		
+	public Ubicacio getUbicacio(){ 
+		return ubicacio;
+	}
+	
+	public void canviarUbicacio(ContenidorBrossa c, Ubicacio novaUbicacio){
+		ubicacio.treureContenidor(c);
+		novaUbicacio.afegirContenidor(c);
+	}
+	
+	public void retirarViaPublica(int i){
+		if (ubicacio.treureContenidor(this)){
+			ubicacio = null;
+			this.anyret = i; 
+	} } }
