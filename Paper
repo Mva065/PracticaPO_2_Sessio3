@@ -1,0 +1,27 @@
+package Exercici3;
+
+public class Paper extends ContenidorBrossa{
+	
+	private double kgReciclat;
+	
+	public double getkgReciclat(){
+		return kgReciclat;
+	}
+	
+	public Paper(String codi, Ubicacio ubicacio, int anycol, int tara) {
+		super(codi, 2, ubicacio, anycol, tara);
+	}
+	
+	public String getXXX(){
+		return kgReciclat + " Kg";
+	}
+
+	@Override
+	public String getTipusBrossa() {
+		return "paper";
+	}
+
+	@Override
+	public void buidat(float pes) {
+		kgReciclat = (float) ((- this.gettara() + pes) * 0.95);
+	} }
