@@ -1,0 +1,30 @@
+package Exercici3;
+
+public class Vidre extends ContenidorBrossa{
+
+	private long numReciclat;
+	
+	public long getnumRecicalt(){
+		return numReciclat;
+	}
+
+	public Vidre(String codi, Ubicacio ubicacio, int anycol, int tara) {
+		super(codi, 5, ubicacio, anycol, tara);
+	}
+	
+	public String getXXX(){
+		return numReciclat + " envasos";
+	}
+
+	
+
+	@Override
+	public String getTipusBrossa() {
+		return "vidre";
+	}
+
+	@Override
+	public void buidat(float pes) {
+		numReciclat = (int) ((- this.gettara() + pes) * 3);
+		
+	} }
