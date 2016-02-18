@@ -1,0 +1,30 @@
+package Exercici3;
+
+public class Plastic extends ContenidorBrossa{
+
+	private double kgReciclat;
+	
+	public double getkgReciclat(){
+		return kgReciclat;
+	}
+	
+	public Plastic(String codi, Ubicacio ubicacio, int anycol, int tara) {
+		super(codi, 4, ubicacio, anycol, tara);
+	}
+	
+	public String getXXX(){
+		return kgReciclat + " Kg";
+	}
+
+	
+
+	@Override
+	public String getTipusBrossa() {
+		return "plàstic";
+	}
+
+	@Override
+	public void buidat(float pes) {
+		kgReciclat = (float) ((- this.gettara() + pes) * 0.80);
+		
+	} }
