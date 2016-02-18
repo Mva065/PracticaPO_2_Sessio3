@@ -1,0 +1,74 @@
+package Exercici3;
+
+public class Prova {
+public static void main(String [] args){
+	
+	String [] tNomVia = {"Carrer Rosselló", "Carrer Roger de Flor", "Carrer Grassot"}; //3 Carrers
+	int [] tNumVia = {123, 54, 78}; 
+	boolean [] tCruilla = {false, false, true};
+	
+	Ubicacio ubicacio1 = new Ubicacio(tNomVia[0], tNumVia [0], tCruilla[0]); Ubicacio.numUbicacions++;
+	Ubicacio ubicacio2 = new Ubicacio(tNomVia[1], tNumVia [1], tCruilla[1]); Ubicacio.numUbicacions++;
+
+	Organic c0 = new Organic(GenerarParametresContenidor.generarCodi(), ubicacio1, GenerarParametresContenidor.generarAny(), 47);
+	Rebuig c1 = new Rebuig(GenerarParametresContenidor.generarCodi(), ubicacio1, GenerarParametresContenidor.generarAny(), 78);
+	Plastic c2 = new Plastic(GenerarParametresContenidor.generarCodi(), ubicacio2, GenerarParametresContenidor.generarAny(), 87);
+	Paper c3 = new Paper(GenerarParametresContenidor.generarCodi(), ubicacio2, GenerarParametresContenidor.generarAny(), 87);
+	Vidre c4 = new Vidre(GenerarParametresContenidor.generarCodi(), ubicacio2, GenerarParametresContenidor.generarAny(), 78);
+	Vidre c5 = new Vidre(GenerarParametresContenidor.generarCodi(), ubicacio2, GenerarParametresContenidor.generarAny(), 78); // ¿VERD = VIDRE?
+	
+	ubicacio1.afegirContenidor(c0); ubicacio1.afegirContenidor(c1); 
+	ubicacio2.afegirContenidor(c2); ubicacio2.afegirContenidor(c3); ubicacio2.afegirContenidor(c4); ubicacio2.afegirContenidor(c5);
+	
+	System.out.println("> Contenidors de cada Ubicació: ");
+	System.out.println("********************************");
+	imprimir(tNomVia, ubicacio1, 0);
+	imprimir(tNomVia, ubicacio2, 1);
+	
+	c0.canviarUbicacio(c0, ubicacio2);
+	c2.canviarUbicacio(c2, ubicacio1);
+	System.out.println();
+	
+	System.out.println("> Dades de cada contenidor");
+	System.out.println("**************************");
+	System.out.println("El contenidor de codi " + c0.getcodi() + " de tipus " + c0.getTipusBrossa() + " ha reciclat " + c0.getXXX());
+	System.out.println("El contenidor de codi " + c1.getcodi() + " de tipus " + c1.getTipusBrossa() + " ha reciclat " + c1.getXXX());
+	System.out.println("El contenidor de codi " + c2.getcodi() + " de tipus " + c2.getTipusBrossa() + " ha reciclat " + c2.getXXX());
+	System.out.println("El contenidor de codi " + c3.getcodi() + " de tipus " + c3.getTipusBrossa() + " ha reciclat " + c3.getXXX());
+	System.out.println("El contenidor de codi " + c5.getcodi() + " de tipus " + c4.getTipusBrossa() + " ha reciclat " + c4.getXXX());
+	System.out.println("El contenidor de codi " + c5.getcodi() + " de tipus " + c5.getTipusBrossa() + " ha reciclat " + c5.getXXX());
+	
+	
+	System.out.println();
+	System.out.println("> Canviem d'ubicació el primer conetenidor de cada ubicació");
+	System.out.println("***********************************************************");
+	imprimir(tNomVia, ubicacio1, 0);
+	imprimir(tNomVia, ubicacio2, 1); System.out.println();
+	
+	
+	System.out.println(">>> Treiem el contenidor 2");
+	System.out.println("***************************");
+	ubicacio1.treureContenidor(c1);
+	c1.retirarViaPublica(2016);
+	imprimir(tNomVia, ubicacio1, 0);
+	imprimir(tNomVia, ubicacio2, 1);
+	System.out.println();
+	
+	c0.buidat((float) 324.20); c1.buidat((float) 424.33); c2.buidat((float) 320.22); c3.buidat((float) 359.22); 
+	c4.buidat((int) 150.77); c5.buidat((int) 175.44);
+	
+	System.out.println("> Buidat dels contenidors. Dades després del buidat");
+	System.out.println("***************************************************");
+	System.out.println("El contenidor de codi " + c0.getcodi() + " de tipus " + c0.getTipusBrossa() + " ha reciclat " + c0.getXXX());
+	System.out.println("El contenidor de codi " + c1.getcodi() + " de tipus " + c1.getTipusBrossa() + " ha reciclat " + c1.getXXX());
+	System.out.println("El contenidor de codi " + c2.getcodi() + " de tipus " + c2.getTipusBrossa() + " ha reciclat " + c2.getXXX());
+	System.out.println("El contenidor de codi " + c3.getcodi() + " de tipus " + c3.getTipusBrossa() + " ha reciclat " + c3.getXXX());
+	System.out.println("El contenidor de codi " + c5.getcodi() + " de tipus " + c4.getTipusBrossa() + " ha reciclat " + c4.getXXX());
+	System.out.println("El contenidor de codi " + c5.getcodi() + " de tipus " + c5.getTipusBrossa() + " ha reciclat " + c5.getXXX());
+
+	
+} private static void imprimir(String tNomVia [], Ubicacio ubicacio, int j) {
+	System.out.print("> " + tNomVia[j] + ". hi ha els contenidors: ");
+	for (int i = 0; i < ubicacio.getnumContenidors() ; i++){ 
+		System.out.print(ubicacio.getContenidors(i) + ", ");
+		}  System.out.println(); }	}
