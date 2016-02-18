@@ -1,0 +1,90 @@
+package Exercici3;
+
+public class Ubicacio {
+
+	private String nomVia; //Atributs
+	private int numVia;
+	private boolean cruilla;
+	
+	//private String contenidors;
+	private int numContenidors = 0;
+	private static final int  MAX_CONTENIDORS = 5;
+	private ContenidorBrossa [] contenidors = new ContenidorBrossa [20]; 
+	public static int numUbicacions = 0;
+	
+	public String getnomVia(){ // Mètode d'accés als atributs
+		return nomVia;
+	}
+	
+	public int getnumVia(){ // Mètode d'accés als atributs
+		return numVia;
+	}
+	
+	
+	public int getnumContenidors(){ // Mètode d'accés als atributs
+		return numContenidors;
+	}
+	
+	public int numUbicacions(){
+		return numUbicacions;
+	}
+	
+	
+	
+
+	public Ubicacio (String nomVia, int numVia, boolean cruilla){ //Constructor
+		this.nomVia = nomVia;
+		this.numVia = numVia;
+		this.cruilla = cruilla;
+		
+	}
+	
+	public String getContenidors(int i){
+		String tCodi = this.contenidors[i].getcodi();
+		return tCodi;
+	}
+	
+	public boolean afegirContenidor(ContenidorBrossa c){
+		
+		
+		
+		
+		boolean trobat = true;
+		
+		for (int i = 0; i < numContenidors; i++){
+			if(c.getcolor() == contenidors[i].getcolor())
+				trobat = false;
+		} if (trobat && numContenidors < MAX_CONTENIDORS){
+			this.contenidors[numContenidors] = c;
+			numContenidors++;
+		} return trobat;	
+	}
+	
+	public String estatCont (int i){
+		if (this.contenidors[i].getEstat() == "Vell"){
+			return "Vell";
+		} else if (this.contenidors[i].getEstat() == "Nou"){
+			return "Nou";
+		} else if (this.contenidors[i].getEstat() == "Seminou"){
+			return "Seminou";
+		} else {
+			return "ERROR";
+		}
+	}
+	
+	public boolean treureContenidor(ContenidorBrossa c){
+		
+		boolean trobat = false; int i = 0;
+		for (int k = 0; k < numContenidors && !trobat; k++){
+			if (c == contenidors[k]){
+				trobat = true; i = k;
+			}} if (trobat){
+			this.contenidors[i] = null;
+			for (int k = i; k < numContenidors; k++) {
+				if(k == numContenidors-1){
+					contenidors[k] = null;
+				} else {
+					contenidors[k] = contenidors[k+1];
+				}} numContenidors--;
+		} return trobat;
+}}
